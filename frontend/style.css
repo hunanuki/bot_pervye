@@ -271,7 +271,7 @@ body {
     position: absolute;
     width: 100%;
     /* Используем min() чтобы круги не опускались слишком низко */
-    top: min(max(240px, 35vh), 280px);
+    top: min(max(220px, 35vh), 260px);
     display: flex;
     justify-content: center;
     gap: clamp(10px, 3vw, 20px);
@@ -789,14 +789,14 @@ body {
 
 @media (max-width: 600px) {
     .circles-container {
-        top: min(max(240px, 35vh), 280px);
+        top: min(max(220px, 35vh), 260px);
     }
 }
 
 /* Для компьютеров */
 @media (min-width: 601px) {
     .circles-container {
-        top: 280px;
+        top: 260px;
     }
 }
 
