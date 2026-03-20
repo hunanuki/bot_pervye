@@ -271,7 +271,7 @@ body {
     position: absolute;
     width: 100%;
     /* Используем min() чтобы круги не опускались слишком низко */
-    top: min(max(220px, 35vh), 270px);
+    top: min(max(200px, 35vh), 250px);
     display: flex;
     justify-content: center;
     gap: clamp(10px, 3vw, 20px);
