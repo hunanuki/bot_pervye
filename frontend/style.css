@@ -789,7 +789,7 @@ body {
 
 @media (max-width: 600px) {
     .circles-container {
-        top: min(max(280px, 35vh), 320px);
+        top: min(max(240px, 35vh), 280px);
     }
 }
 
