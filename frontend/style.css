@@ -270,13 +270,15 @@ body {
 .circles-container {
     position: absolute;
     width: 100%;
-    top: max(280px, 38vh);
+    /* Используем min() чтобы круги не опускались слишком низко */
+    top: min(max(280px, 35vh), 320px);
     display: flex;
     justify-content: center;
     gap: clamp(10px, 3vw, 20px);
     left: 0;
     padding: 0 15px;
     box-sizing: border-box;
+    z-index: 5;
 }
 
 .circle-group {
@@ -770,7 +772,24 @@ body {
     }
 }
 
+/* Для очень высоких экранов (компьютер) */
+@media (min-height: 800px) {
+    .circles-container {
+        top: 300px;
+    }
+    
+    .letter-i {
+        bottom: -50px;
+    }
+    
+    .heroes {
+        bottom: -30px;
+    }
+}
+
 /* ===== УТИЛИТЫ ===== */
 .hidden {
     display: none !important;
 }
+
+
