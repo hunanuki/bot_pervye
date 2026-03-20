@@ -4,8 +4,12 @@
  */
 
 const tg = window.Telegram.WebApp;
-tg.expand();
+tg.expand(); // Растягиваем на весь экран
 tg.ready();
+
+// Дополнительно устанавливаем цвет фона (опционально)
+tg.setHeaderColor('#4000FF');
+tg.setBottomBarColor('#4000FF');
 
 // Состояние приложения
 const state = {

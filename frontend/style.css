@@ -4,22 +4,43 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background: #000;
 }
 
-/* Основной контейнер - точно как в Figma */
+/* Основной контейнер */
 .app {
     position: relative;
-    width: 422px;
-    height: 625px;
-    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    max-width: 422px;
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     background: linear-gradient(0deg, #4000FF, #4000FF);
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Скрываем скроллбар */
+.app::-webkit-scrollbar {
+    display: none;
 }
 
 /* Фоновый градиент */
@@ -29,12 +50,13 @@ body {
     height: 100%;
     background: linear-gradient(0deg, #4000FF, #4000FF);
     z-index: 0;
+    pointer-events: none;
 }
 
 /* ===== ШАПКА ===== */
 .header {
     position: absolute;
-    width: 422px;
+    width: 100%;
     height: 48px;
     left: 0;
     top: 0;
@@ -92,7 +114,7 @@ body {
     position: absolute;
     width: 66px;
     height: 25px;
-    left: 335px;
+    right: 15px;
     top: 11px;
     z-index: 11;
     transition: transform 0.2s ease;
@@ -190,7 +212,8 @@ body {
     position: absolute;
     width: 233px;
     height: 41px;
-    left: 94px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 150px;
     transition: transform 0.2s ease;
     cursor: pointer;
@@ -228,7 +251,7 @@ body {
 
 /* Анимация при наведении на кнопку */
 .join-container:hover {
-    transform: scale(1.05);
+    transform: translateX(-50%) scale(1.05);
 }
 
 .join-container:hover .join-border {
@@ -241,7 +264,7 @@ body {
 }
 
 .join-container:active {
-    transform: scale(0.95);
+    transform: translateX(-50%) scale(0.95);
 }
 
 /* ===== КРУГИ ===== */
@@ -260,8 +283,8 @@ body {
 
 .circle-group {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: min(120px, 25vw);
+    height: min(120px, 25vw);
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -318,7 +341,7 @@ body {
 .circle-number {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: 28px;
+    font-size: clamp(20px, 6vw, 28px);
     line-height: 1.2;
     text-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
     margin-bottom: 4px;
@@ -326,7 +349,7 @@ body {
 
 .circle-text {
     font-family: 'Inter', sans-serif;
-    font-size: 7px;
+    font-size: clamp(6px, 1.8vw, 7px);
     line-height: 1.2;
     text-transform: uppercase;
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
@@ -337,10 +360,12 @@ body {
 /* Буква И */
 .letter-i {
     position: absolute;
-    width: 450px;
-    height: 350px;
+    width: min(450px, 100%);
+    height: auto;
+    aspect-ratio: 450/350;
     left: -4px;
-    top: 320px;
+    bottom: 0;
+    top: auto;
     background: url('images/letter-i.svg') no-repeat center/contain;
     filter: drop-shadow(-12px -50px 110.6px rgba(0, 0, 0, 0.6));
     z-index: 1;
@@ -349,26 +374,27 @@ body {
 /* Герои */
 .heroes {
     position: absolute;
-    width: 414px;
-    height: 266px;
+    width: min(414px, 100%);
+    height: auto;
+    aspect-ratio: 414/266;
     left: 4px;
-    top: 369px;
+    bottom: 0;
+    top: auto;
     background: url('images/heroes.svg') no-repeat center/contain;
     z-index: 2;
 }
 
-/* ===== МЕНЮ СТИЛИ ИЗ FIGMA (ВЫПАДАЮЩЕЕ РЯДОМ С КНОПКОЙ) ===== */
+/* ===== МЕНЮ СТИЛИ ИЗ FIGMA ===== */
 .menu-page {
     position: absolute;
     top: 0;
     left: 0;
-    width: 422px;
-    height: 625px;
+    width: 100%;
+    height: 100%;
     z-index: 20;
     pointer-events: none;
 }
 
-/* Затемнение для клика (прозрачное, только для закрытия) */
 .menu-page .menu-overlay {
     position: absolute;
     top: 0;
@@ -381,10 +407,9 @@ body {
     pointer-events: auto;
 }
 
-/* Контейнер с пунктами меню - стили из Figma */
 .menu-page .menu-items-container {
     position: absolute;
-    width: 394px;
+    width: min(394px, 90%);
     right: 15px;
     top: 55px;
     background: rgba(255, 255, 255, 0.1);
@@ -402,15 +427,11 @@ body {
 .menu-page .menu-item {
     width: 100%;
     font-family: 'Inter', sans-serif;
-    font-style: normal;
     font-weight: 800;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: clamp(16px, 4vw, 20px);
     text-align: center;
     color: #FFFFFF;
-    text-shadow: 0px 0px 1.1px #F5F5F5;
     cursor: pointer;
-    background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.45);
 }
 
@@ -422,30 +443,11 @@ body {
     width: 100%;
     padding: 16px 20px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: inherit;
     color: #FFFFFF;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: center;
-}
-
-.menu-page .menu-item-header:hover {
-    background: rgba(255, 255, 255, 0.08);
-    text-shadow: 0 0 15px #FFFFFF;
-}
-
-/* Четвертый пункт с длинным текстом */
-.menu-page .menu-item-4 .menu-item-header {
-    white-space: normal;
-    word-break: break-word;
-    line-height: 1.3;
-    padding: 12px 20px;
-    font-size: 18px;
-}
-
-/* Убираем треугольники */
-.menu-page .menu-arrow {
-    display: none;
 }
 
 /* Подменю */
@@ -468,11 +470,10 @@ body {
     padding: 10px 32px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: clamp(14px, 3.5vw, 16px);
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     transition: all 0.2s ease;
-    list-style: none;
     text-align: center;
 }
 
@@ -481,18 +482,13 @@ body {
     color: #FFFFFF;
 }
 
-/* Разделительные линии - УДАЛЯЕМ, так как используем border-bottom */
-.menu-page .menu-line {
-    display: none;
-}
-
 /* ===== СТРАНИЦА РЕЙТИНГА ===== */
 .rating-page {
     position: absolute;
     top: 0;
     left: 0;
-    width: 422px;
-    height: 625px;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(0deg, #4000FF, #4000FF);
     z-index: 20;
     overflow: hidden;
@@ -501,10 +497,12 @@ body {
 /* Буква И на странице рейтинга */
 .rating-letter-i {
     position: absolute;
-    width: 450px;
-    height: 350px;
+    width: min(450px, 100%);
+    height: auto;
+    aspect-ratio: 450/350;
     left: -4px;
-    top: 200px;
+    bottom: 0;
+    top: auto;
     background: url('images/letter-i.svg') no-repeat center/contain;
     filter: drop-shadow(-12px -50px 110.6px rgba(0, 0, 0, 0.6));
     z-index: 0;
@@ -513,10 +511,12 @@ body {
 /* Синие эллипсы */
 .ellipse-left {
     position: absolute;
-    width: 87px;
-    height: 377px;
+    width: min(87px, 20vw);
+    height: auto;
+    aspect-ratio: 87/377;
     left: -97px;
-    top: 525px;
+    bottom: 0;
+    top: auto;
     background: #64A7EB;
     box-shadow: 0px 4px 130.1px 157px #66B4EA;
     border-radius: 50%;
@@ -526,9 +526,11 @@ body {
 
 .ellipse-right {
     position: absolute;
-    width: 87px;
-    height: 377px;
-    left: 422px;
+    width: min(87px, 20vw);
+    height: auto;
+    aspect-ratio: 87/377;
+    right: -97px;
+    left: auto;
     top: 148px;
     background: #64A7EB;
     opacity: 0.68;
@@ -552,7 +554,7 @@ body {
 .rating-game-title {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
-    font-size: 32px;
+    font-size: clamp(24px, 6vw, 32px);
     line-height: 1;
     color: #FFFFFF;
     text-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
@@ -565,7 +567,7 @@ body {
 .rating-season-title {
     font-family: 'Inter', sans-serif;
     font-weight: 100;
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 18px);
     line-height: 1;
     color: rgba(255, 255, 255, 0.7);
     -webkit-font-smoothing: antialiased;
@@ -687,28 +689,13 @@ body {
     font-weight: 300;
 }
 
-/* Убираем нижнюю навигацию */
-.rating-footer {
-    display: none;
-}
-
-/* Адаптация для длинных названий */
-.rating-game-title.long-title {
-    font-size: 28px;
-    white-space: normal;
-}
-
-.rating-game-title.short-title {
-    font-size: 36px;
-}
-
 /* ===== МЕНЮ НА СТРАНИЦЕ РЕЙТИНГА ===== */
 .rating-menu-page {
     position: absolute;
     top: 0;
     left: 0;
-    width: 422px;
-    height: 625px;
+    width: 100%;
+    height: 100%;
     z-index: 100;
     pointer-events: none;
 }
@@ -727,7 +714,7 @@ body {
 
 .rating-menu-items-container {
     position: absolute;
-    width: 394px;
+    width: min(394px, 90%);
     right: 15px;
     top: 55px;
     background: rgba(255, 255, 255, 0.1);
@@ -745,7 +732,7 @@ body {
     width: 100%;
     font-family: 'Inter', sans-serif;
     font-weight: 800;
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
@@ -760,7 +747,7 @@ body {
     width: 100%;
     padding: 16px 20px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: inherit;
     color: #FFFFFF;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -791,11 +778,10 @@ body {
     padding: 10px 32px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: clamp(14px, 3.5vw, 16px);
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     transition: all 0.2s ease;
-    list-style: none;
     text-align: center;
 }
 
@@ -804,6 +790,7 @@ body {
     color: #FFFFFF;
 }
 
+/* Загрузка */
 .loading {
     text-align: center;
     padding: 40px;
@@ -814,60 +801,32 @@ body {
 
 /* ===== Адаптация под маленькие экраны ===== */
 @media (max-width: 422px) {
-    .app {
-        width: 100%;
-        height: 100vh;
+    .circle-group {
+        width: 100px;
+        height: 100px;
     }
     
-    .header {
-        width: 100%;
+    .circle-number {
+        font-size: 24px;
     }
     
-    .menu-container {
-        left: auto;
-        right: 10px;
+    .circle-text {
+        font-size: 6px;
     }
     
-    .subtitle {
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-    }
-    
-    .join-container {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    /* Адаптация для меню на главной странице */
-    .menu-page .menu-items-container {
-        width: 300px; /* Уменьшаем ширину */
-        right: 10px;
-        top: 50px;
-    }
-    
-    .menu-page .menu-item-header {
-        font-size: 16px; /* Уменьшаем шрифт */
-        padding: 12px 15px;
-    }
-    
-    .menu-page .submenu-item {
-        font-size: 14px;
-        padding: 8px 20px;
-    }
-    
-    /* Адаптация для меню на странице рейтинга */
+    .menu-page .menu-items-container,
     .rating-menu-page .rating-menu-items-container {
-        width: 300px;
+        width: 280px;
         right: 10px;
-        top: 50px;
     }
     
+    .menu-page .menu-item-header,
     .rating-menu-page .rating-menu-item-header {
         font-size: 16px;
         padding: 12px 15px;
     }
     
+    .menu-page .submenu-item,
     .rating-menu-page .rating-submenu-item {
         font-size: 14px;
         padding: 8px 20px;
