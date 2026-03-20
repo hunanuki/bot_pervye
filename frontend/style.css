@@ -1,114 +1,880 @@
-/* ========== ОСНОВНЫЕ СТИЛИ ========== */
-
-/* Сброс стилей */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Переменные темы Telegram */
-:root {
-    --bg-color: var(--tg-theme-bg-color, #ffffff);
-    --text-color: var(--tg-theme-text-color, #000000);
-    --button-color: var(--tg-theme-button-color, #40a7e3);
-    --button-text-color: var(--tg-theme-button-text-color, #ffffff);
-    --secondary-bg: var(--tg-theme-secondary-bg-color, #f5f5f5);
-    --hint-color: var(--tg-theme-hint-color, #999999);
-}
-
-/* Базовые стили */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    line-height: 1.5;
+    background: #000;
 }
 
+/* Основной контейнер - точно как в Figma */
 .app {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* ========== КОМПОНЕНТЫ ========== */
-
-/* Загрузка */
-.loading {
-    text-align: center;
-    padding: 40px;
-    color: var(--hint-color);
-}
-
-/* Таблица */
-.table-container {
-    background: var(--secondary-bg);
-    border-radius: 12px;
+    position: relative;
+    width: 422px;
+    height: 625px;
     overflow: hidden;
-    margin-top: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(0deg, #4000FF, #4000FF);
 }
 
-.data-table {
+/* Фоновый градиент */
+.background-gradient {
+    position: absolute;
     width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
+    height: 100%;
+    background: linear-gradient(0deg, #4000FF, #4000FF);
+    z-index: 0;
 }
 
-.data-table th {
-    background: var(--button-color);
-    color: var(--button-text-color);
-    padding: 12px;
-    text-align: left;
-    font-weight: 600;
+/* ===== ШАПКА ===== */
+.header {
+    position: absolute;
+    width: 422px;
+    height: 48px;
+    left: 0;
+    top: 0;
+    z-index: 10;
 }
 
-.data-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--hint-color);
+.header-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #68BBE9 0%, #4000FF 80.29%);
+    box-shadow: 0px 4px 32.2px -11px rgba(0, 0, 0, 0.25);
 }
 
-.data-table tr:last-child td {
+/* Партнеры */
+.partners {
+    position: absolute;
+    width: 190px;
+    height: 39px;
+    left: 15px;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 11;
+}
+
+.logo-first {
+    width: 27px;
+    height: 37px;
+    background: url('images/Первые.svg') no-repeat center/contain;
+}
+
+.logo-goodgame {
+    width: 64px;
+    height: 39px;
+    background: url('images/goodgame.svg') no-repeat center/contain;
+}
+
+.logo-warpoint {
+    width: 73px;
+    height: 10px;
+    background: url('images/warpoint.svg') no-repeat center/contain;
+}
+
+.logo-divider {
+    width: 2px;
+    height: 18px;
+    background: #FFFFFF;
+    transform: scaleX(0.3)
+}
+
+/* Кнопка меню */
+.menu-container {
+    position: absolute;
+    width: 66px;
+    height: 25px;
+    left: 335px;
+    top: 11px;
+    z-index: 11;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.menu-button-border {
+    position: absolute;
+    width: 66px;
+    height: 25px;
+    border: 1px solid #FFFFFF;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.menu-button {
+    position: absolute;
+    width: 54px;
+    height: 18px;
+    left: 6px;
+    top: 4px;
+    background: transparent;
+    border: none;
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1.3px #FFFFFF;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Анимация при наведении */
+.menu-container:hover {
+    transform: scale(1.05);
+}
+
+.menu-container:hover .menu-button-border {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.menu-container:hover .menu-button {
+    text-shadow: 0 0 10px #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+.menu-container:active {
+    transform: scale(0.95);
+}
+
+/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+.main-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+/* Заголовок */
+.title-container {
+    position: absolute;
+    width: 353px;
+    height: 47px;
+    left: 28px;
+    top: 69px;
+}
+
+.main-title {
+    width: 100%;
+    height: 100%;
+    background: url('images/main-title.svg') no-repeat center/contain;
+    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.75));
+}
+
+.subtitle {
+    position: absolute;
+    width: 319px;
+    height: 24px;
+    left: 21px;
+    top: 46px;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* Кнопка "Принять участие" */
+.join-container {
+    position: absolute;
+    width: 233px;
+    height: 41px;
+    left: 94px;
+    top: 150px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.join-border {
+    position: absolute;
+    width: 233px;
+    height: 41px;
+    border: 1px solid #FFFFFF;
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.join-button {
+    position: absolute;
+    width: 216px;
+    height: 26px;
+    left: 9px;
+    top: 7px;
+    background: transparent;
+    border: none;
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1.1px #F5F5F5;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Анимация при наведении на кнопку */
+.join-container:hover {
+    transform: scale(1.05);
+}
+
+.join-container:hover .join-border {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.join-container:hover .join-button {
+    text-shadow: 0 0 10px #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+.join-container:active {
+    transform: scale(0.95);
+}
+
+/* ===== КРУГИ ===== */
+.circles-container {
+    position: absolute;
+    width: 100%;
+    height: 140px;
+    top: 215px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    left: 0;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.circle-group {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Градиентный фон */
+.circle-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        #8574F4 0%,
+        rgba(133, 116, 244, 0.6) 40%,
+        rgba(133, 116, 244, 0) 80%
+    );
+    opacity: 0.5;
+    z-index: 1;  
+}
+
+/* Круги */
+.circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+    z-index: 2;
+    pointer-events: none;
+    border: 1.5px solid #FFFFFF;
+}
+
+/* Контент внутри круга */
+.circle-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 0 5px;
+}
+
+.circle-number {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1.2;
+    text-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+    margin-bottom: 4px;
+}
+
+.circle-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 7px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    max-width: 100px;
+    transition: all 0.3s ease;
+}
+
+/* Буква И */
+.letter-i {
+    position: absolute;
+    width: 450px;
+    height: 350px;
+    left: -4px;
+    top: 320px;
+    background: url('images/letter-i.svg') no-repeat center/contain;
+    filter: drop-shadow(-12px -50px 110.6px rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+/* Герои */
+.heroes {
+    position: absolute;
+    width: 414px;
+    height: 266px;
+    left: 4px;
+    top: 369px;
+    background: url('images/heroes.svg') no-repeat center/contain;
+    z-index: 2;
+}
+
+/* ===== МЕНЮ СТИЛИ ИЗ FIGMA (ВЫПАДАЮЩЕЕ РЯДОМ С КНОПКОЙ) ===== */
+.menu-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 422px;
+    height: 625px;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Затемнение для клика (прозрачное, только для закрытия) */
+.menu-page .menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 21;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* Контейнер с пунктами меню - стили из Figma */
+.menu-page .menu-items-container {
+    position: absolute;
+    width: 394px;
+    right: 15px;
+    top: 55px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    z-index: 22;
+    pointer-events: auto;
+}
+
+/* Пункты меню */
+.menu-page .menu-item {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 1.1px #F5F5F5;
+    cursor: pointer;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.menu-page .menu-item:last-child {
     border-bottom: none;
 }
 
-/* Кнопки */
-.button {
-    background: var(--button-color);
-    color: var(--button-text-color);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 16px;
+.menu-page .menu-item-header {
+    width: 100%;
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease;
+    text-align: center;
 }
 
-.button:hover {
-    opacity: 0.9;
+.menu-page .menu-item-header:hover {
+    background: rgba(255, 255, 255, 0.08);
+    text-shadow: 0 0 15px #FFFFFF;
 }
 
-.button:active {
-    opacity: 0.8;
+/* Четвертый пункт с длинным текстом */
+.menu-page .menu-item-4 .menu-item-header {
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.3;
+    padding: 12px 20px;
+    font-size: 18px;
 }
 
-/* Карточки */
-.card {
-    background: var(--secondary-bg);
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 16px;
+/* Убираем треугольники */
+.menu-page .menu-arrow {
+    display: none;
 }
 
-/* Заголовки */
-h1, h2, h3 {
-    margin-bottom: 16px;
+/* Подменю */
+.menu-page .submenu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
 }
 
-/* Сетка */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
+.menu-page .menu-item.expanded .submenu {
+    max-height: 350px;
+    opacity: 1;
+    padding: 8px 0;
+}
+
+.menu-page .submenu-item {
+    padding: 10px 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    list-style: none;
+    text-align: center;
+}
+
+.menu-page .submenu-item:hover {
+    background: rgba(133, 116, 244, 0.3);
+    color: #FFFFFF;
+}
+
+/* Разделительные линии - УДАЛЯЕМ, так как используем border-bottom */
+.menu-page .menu-line {
+    display: none;
+}
+
+/* ===== СТРАНИЦА РЕЙТИНГА ===== */
+.rating-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 422px;
+    height: 625px;
+    background: linear-gradient(0deg, #4000FF, #4000FF);
+    z-index: 20;
+    overflow: hidden;
+}
+
+/* Буква И на странице рейтинга */
+.rating-letter-i {
+    position: absolute;
+    width: 450px;
+    height: 350px;
+    left: -4px;
+    top: 200px;
+    background: url('images/letter-i.svg') no-repeat center/contain;
+    filter: drop-shadow(-12px -50px 110.6px rgba(0, 0, 0, 0.6));
+    z-index: 0;
+}
+
+/* Синие эллипсы */
+.ellipse-left {
+    position: absolute;
+    width: 87px;
+    height: 377px;
+    left: -97px;
+    top: 525px;
+    background: #64A7EB;
+    box-shadow: 0px 4px 130.1px 157px #66B4EA;
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 0;
+}
+
+.ellipse-right {
+    position: absolute;
+    width: 87px;
+    height: 377px;
+    left: 422px;
+    top: 148px;
+    background: #64A7EB;
+    opacity: 0.68;
+    box-shadow: 0px 4px 130.1px 157px #66B4EA;
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 0;
+}
+
+/* Заголовки рейтинга */
+.rating-header-content {
+    position: absolute;
+    top: 76px;
+    left: 30px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.rating-game-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
+    margin: 0;
+    padding: 0;
+    max-width: 350px;
+    word-wrap: break-word;
+}
+
+.rating-season-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.7);
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер таблицы */
+.rating-table-wrapper {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    top: 138px;
+    z-index: 5;
+    background: transparent;
+}
+
+.rating-table-container {
+    position: relative;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    display: inline-block;
+    min-width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Вертикальная линия */
+.vertical-line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.45);
+    left: 50px;
+    top: 0;
+    z-index: 1;
+}
+
+/* Контейнер для строк */
+.rating-rows {
+    padding: 5px 0;
+    z-index: 2;
+    max-height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #8574F4 rgba(255, 255, 255, 0.1);
+}
+
+/* Стили для скроллбара */
+.rating-rows::-webkit-scrollbar {
+    width: 4px;
+}
+
+.rating-rows::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.rating-rows::-webkit-scrollbar-thumb {
+    background: #8574F4;
+    border-radius: 4px;
+}
+
+/* Строка рейтинга */
+.rating-row {
+    display: flex;
+    align-items: center;
+    height: 33px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+    width: 100%;
+    padding: 0 15px 0 10px;
+    box-sizing: border-box;
+}
+
+.rating-row:last-child {
+    border-bottom: none;
+}
+
+.rating-row .position {
+    width: 25px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.rating-row .team-name {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding-left: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Стили для разных позиций */
+.rating-row.top-three .position {
+    font-weight: 600;
+}
+
+.rating-row.top-three .team-name {
+    font-weight: 500;
+}
+
+.rating-row:not(.top-three) .position {
+    font-weight: 400;
+}
+
+.rating-row:not(.top-three) .team-name {
+    font-weight: 300;
+}
+
+/* Убираем нижнюю навигацию */
+.rating-footer {
+    display: none;
+}
+
+/* Адаптация для длинных названий */
+.rating-game-title.long-title {
+    font-size: 28px;
+    white-space: normal;
+}
+
+.rating-game-title.short-title {
+    font-size: 36px;
+}
+
+/* ===== МЕНЮ НА СТРАНИЦЕ РЕЙТИНГА ===== */
+.rating-menu-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 422px;
+    height: 625px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.rating-menu-overlay {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 48px);
+    background: transparent;
+    z-index: 101;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.rating-menu-items-container {
+    position: absolute;
+    width: 394px;
+    right: 15px;
+    top: 55px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    z-index: 102;
+    pointer-events: auto;
+}
+
+.rating-menu-item {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.rating-menu-item:last-child {
+    border-bottom: none;
+}
+
+.rating-menu-item-header {
+    width: 100%;
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.rating-menu-item-header:hover {
+    background: rgba(255, 255, 255, 0.08);
+    text-shadow: 0 0 15px #FFFFFF;
+}
+
+.rating-submenu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.rating-menu-item.expanded .rating-submenu {
+    max-height: 350px;
+    opacity: 1;
+    padding: 8px 0;
+}
+
+.rating-submenu-item {
+    padding: 10px 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    list-style: none;
+    text-align: center;
+}
+
+.rating-submenu-item:hover {
+    background: rgba(133, 116, 244, 0.3);
+    color: #FFFFFF;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+/* ===== Адаптация под маленькие экраны ===== */
+@media (max-width: 422px) {
+    .app {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .header {
+        width: 100%;
+    }
+    
+    .menu-container {
+        left: auto;
+        right: 10px;
+    }
+    
+    .subtitle {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+    
+    .join-container {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Адаптация для меню на главной странице */
+    .menu-page .menu-items-container {
+        width: 300px; /* Уменьшаем ширину */
+        right: 10px;
+        top: 50px;
+    }
+    
+    .menu-page .menu-item-header {
+        font-size: 16px; /* Уменьшаем шрифт */
+        padding: 12px 15px;
+    }
+    
+    .menu-page .submenu-item {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+    
+    /* Адаптация для меню на странице рейтинга */
+    .rating-menu-page .rating-menu-items-container {
+        width: 300px;
+        right: 10px;
+        top: 50px;
+    }
+    
+    .rating-menu-page .rating-menu-item-header {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+    
+    .rating-menu-page .rating-submenu-item {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+}
+
+/* ===== УТИЛИТЫ ===== */
+.hidden {
+    display: none !important;
 }

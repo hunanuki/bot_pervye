@@ -2,27 +2,251 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Telegram Web App -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    
-    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100;0,14..32,200;0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
-    <title>Моё мини-приложение</title>
+    <title>ИГРЫ ПЕРВЫХ</title>
 </head>
 <body>
-    <div class="app" id="app">
-        <!-- Контент будет вставляться через JS -->
-        <div id="content" class="loading">
-            Загрузка...
+    <div class="app">
+        <!-- Фоновый градиент -->
+        <div class="background-gradient"></div>
+        
+        <!-- Шапка с градиентом (видна на всех страницах) -->
+        <header class="header">
+            <div class="header-gradient"></div>
+            
+            <!-- Логотипы партнеров -->
+            <div class="partners">
+                <div class="logo-first"></div>
+                <div class="logo-divider"></div>
+                <div class="logo-goodgame"></div>
+                <div class="logo-divider"></div>
+                <div class="logo-warpoint"></div>
+            </div>
+            
+            <!-- Кнопка меню -->
+            <div class="menu-container" id="menuToggle">
+                <div class="menu-button-border"></div>
+                <button class="menu-button">МЕНЮ</button>
+            </div>
+        </header>
+
+        <!-- ===== СТАРТОВАЯ СТРАНИЦА ===== -->
+        <main class="main-content" id="startPage">
+            <!-- Заголовок -->
+            <div class="title-container">
+                <div class="main-title"></div>
+                <div class="subtitle">КИБЕРСПОРТИВНЫЙ ТУРНИР | ВЕСНА 26'</div>
+            </div>
+
+            <!-- Кнопка "Принять участие" -->
+            <div class="join-container" id="joinButton">
+                <div class="join-border"></div>
+                <button class="join-button">ПРИНЯТЬ УЧАСТИЕ</button>
+            </div>
+
+            <!-- Круги со статистикой -->
+            <div class="circles-container">
+                <!-- Группа 1 - 7 дисциплин -->
+                <div class="circle-group">
+                    <div class="circle"></div>
+                    <div class="circle-content">
+                        <span class="circle-number">7</span>
+                        <span class="circle-text">киберспортивных<br>дисциплин</span>
+                    </div>
+                </div>
+                
+                <!-- Группа 2 - 1000+ участников -->
+                <div class="circle-group">
+                    <div class="circle"></div>
+                    <div class="circle-content">
+                        <span class="circle-number">1000+</span>
+                        <span class="circle-text">зарегистрированных<br>участников</span>
+                    </div>
+                </div>
+                
+                <!-- Группа 3 - 4 сезона -->
+                <div class="circle-group">
+                    <div class="circle"></div>
+                    <div class="circle-content">
+                        <span class="circle-number">4</span>
+                        <span class="circle-text">реализованных<br>сезона</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Буква "И" (фоновая) -->
+            <div class="letter-i"></div>
+
+            <!-- Герои (изображения) -->
+            <div class="heroes"></div>
+        </main>
+
+        <!-- ===== СТРАНИЦА МЕНЮ ===== -->
+        <div class="menu-page hidden" id="menuPage">
+            <!-- Затемнение фона -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+            
+            <!-- Контейнер с пунктами меню -->
+            <div class="menu-items-container">
+                <!-- РЕЙТИНГ КОМАНД/УЧАСТНИКОВ -->
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>РЕЙТИНГ КОМАНД/ УЧАСТНИКОВ</span>
+                    </div>
+                    <div class="submenu">
+                        <div class="submenu-item" data-game="minecraft">MINECRAFT</div>
+                        <div class="submenu-item" data-game="dota2">DOTA 2</div>
+                        <div class="submenu-item" data-game="fifa">FIFA</div>
+                        <div class="submenu-item" data-game="ufc">UFC</div>
+                        <div class="submenu-item" data-game="assetto">ASSETTO CORSA</div>
+                        <div class="submenu-item" data-game="vr">Арена виртуальной реальности «ВАРПОИНТ»</div>
+                        <div class="submenu-item" data-game="sportprog">Спортивное программирование</div>
+                    </div>
+                </div>
+
+                <!-- ДОКУМЕНТЫ -->
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>ДОКУМЕНТЫ</span>
+                    </div>
+                    <div class="submenu">
+                        <div class="submenu-item" data-link="https://docs.google.com/правила">Положение</div>
+                        <div class="submenu-item" data-link="https://docs.google.com/регламент">Регламент</div>
+                        <div class="submenu-item" data-link="https://drive.google.com/заявка">Согласие на обработку персональных данных</div>
+                    </div>
+                </div>
+
+                <!-- СОЦИАЛЬНЫЕ СЕТИ -->
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>СОЦИАЛЬНЫЕ СЕТИ</span>
+                    </div>
+                    <div class="submenu">
+                        <div class="submenu-item" data-link="https://t.me/igripervyhperm">Киберспортивный Турнир "Игры Первых": Пермский кра</div>
+                        <div class="submenu-item" data-link="https://t.me/+vdfwYOZ6nrZhY2Uy">Спорт и ЗОЖ | Первые Пермского края</div>
+                        <div class="submenu-item" data-link="https://vk.com/mypervie59">Движение Первых | Пермский край в ВК</div>
+                        <div class="submenu-item" data-link="https://t.me/mypervie59">Движение Первых | Пермский край в ТГ</div>
+                    </div>
+                </div>
+
+                <!-- ОТВЕТЫ НА ВОПРОСЫ -->
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span>ПАРТНЕРЫ</span>
+                    </div>
+                    <div class="submenu">
+                        <div class="submenu-item" data-link="https://vk.com/perm_gg">Киберспортивный клуб «GOOD GAME»</div>
+                        <div class="submenu-item" data-link="https://vk.com/club205047695">Парк виртуальной реальности "Warpoint"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== СТРАНИЦА РЕЙТИНГА ===== -->
+        <div class="rating-page hidden" id="ratingPage">
+            <!-- Буква И фоновая -->
+            <div class="rating-letter-i"></div>
+            
+            <!-- Шапка -->
+            <header class="header">
+                <div class="header-gradient"></div>
+                <div class="partners">
+                    <div class="logo-first"></div>
+                    <div class="logo-divider"></div>
+                    <div class="logo-goodgame"></div>
+                    <div class="logo-divider"></div>
+                    <div class="logo-warpoint"></div>
+                </div>
+                <!-- Кнопка меню -->
+                <div class="menu-container" id="menuToggleRating">
+                    <div class="menu-button-border"></div>
+                    <button class="menu-button">МЕНЮ</button>
+                </div>
+            </header>
+
+            <!-- Синие эллипсы -->
+            <div class="ellipse-left"></div>
+            <div class="ellipse-right"></div>
+
+            <!-- Заголовки рейтинга -->
+            <div class="rating-header-content">
+                <div class="rating-game-title" id="ratingGameTitle">DOTA 2</div>
+                <div class="rating-season-title" id="ratingSeasonTitle">рейтинг команд 5-го сезона</div>
+            </div>
+
+            <!-- Контейнер таблицы -->
+            <div class="rating-table-wrapper" id="ratingTableWrapper">
+                <div class="rating-table-container">
+                    <div class="vertical-line"></div>
+                    <div class="rating-rows" id="ratingRows"></div>
+                </div>
+            </div>
+
+            <!-- МЕНЮ НА СТРАНИЦЕ РЕЙТИНГА -->
+            <div class="rating-menu-page hidden" id="ratingMenuPage">
+                <div class="rating-menu-overlay" id="ratingMenuOverlay"></div>
+                <div class="rating-menu-items-container">
+                    <!-- РЕЙТИНГ КОМАНД/УЧАСТНИКОВ -->
+                    <div class="rating-menu-item">
+                        <div class="rating-menu-item-header">
+                            <span>РЕЙТИНГ КОМАНД/ УЧАСТНИКОВ</span>
+                        </div>
+                        <div class="rating-submenu">
+                            <div class="rating-submenu-item" data-game="minecraft">MINECRAFT</div>
+                            <div class="rating-submenu-item" data-game="dota2">DOTA 2</div>
+                            <div class="rating-submenu-item" data-game="fifa">FIFA</div>
+                            <div class="rating-submenu-item" data-game="ufc">UFC</div>
+                            <div class="rating-submenu-item" data-game="assetto">ASSETTO CORSA</div>
+                            <div class="rating-submenu-item" data-game="vr">Арена виртуальной реальности «ВАРПОИНТ»</div>
+                            <div class="rating-submenu-item" data-game="sportprog">Спортивное программирование</div>
+                        </div>
+                    </div>
+
+                    <!-- ДОКУМЕНТЫ -->
+                    <div class="rating-menu-item">
+                        <div class="rating-menu-item-header">
+                            <span>ДОКУМЕНТЫ</span>
+                        </div>
+                        <div class="rating-submenu">
+                            <div class="rating-submenu-item" data-link="https://docs.google.com/правила">Положение</div>
+                            <div class="rating-submenu-item" data-link="https://docs.google.com/регламент">Регламент</div>
+                            <div class="rating-submenu-item" data-link="https://drive.google.com/заявка">Согласие на обработку персональных данных</div>
+                        </div>
+                    </div>
+
+                    <!-- СОЦИАЛЬНЫЕ СЕТИ -->
+                    <div class="rating-menu-item">
+                        <div class="rating-menu-item-header">
+                            <span>СОЦИАЛЬНЫЕ СЕТИ</span>
+                        </div>
+                        <div class="rating-submenu">
+                            <div class="rating-submenu-item" data-link="https://t.me/igripervyhperm">Киберспортивный Турнир "Игры Первых": Пермский кра</div>
+                            <div class="rating-submenu-item" data-link="https://t.me/+vdfwYOZ6nrZhY2Uy">Спорт и ЗОЖ | Первые Пермского края</div>
+                            <div class="rating-submenu-item" data-link="https://vk.com/mypervie59">Движение Первых | Пермский край в ВК</div>
+                            <div class="rating-submenu-item" data-link="https://t.me/mypervie59">Движение Первых | Пермский край в ТГ</div>
+                        </div>
+                    </div>
+
+                    <!-- ОТВЕТЫ НА ВОПРОСЫ -->
+                    <div class="rating-menu-item">
+                        <div class="rating-menu-item-header">
+                            <span>ПАРТНЕРЫ</span>
+                        </div>
+                        <div class="rating-submenu">
+                            <div class="rating-submenu-item" data-link="https://vk.com/perm_gg">Киберспортивный клуб «GOOD GAME»</div>
+                            <div class="rating-submenu-item" data-link="https://vk.com/club205047695">Парк виртуальной реальности "Warpoint"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- JavaScript модули -->
-    <script src="api.js"></script>
-    <script src="table.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
