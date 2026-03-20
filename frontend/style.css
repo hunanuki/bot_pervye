@@ -177,7 +177,7 @@ body {
     z-index: 5;
 }
 
-/* Заголовок - адаптивный отступ сверху */
+/* Заголовок */
 .title-container {
     position: absolute;
     width: min(353px, 80%);
@@ -198,16 +198,12 @@ body {
 .subtitle {
     position: absolute;
     width: min(319px, 90%);
-    height: auto;
     left: 50%;
     transform: translateX(-50%);
-    /* Было: top: calc(max(40px, 8vh) + 50px); */
-    /* Исправлено: */
-    top: calc(max(40px, 8vh) - 10px);
+    top: calc(max(70px, 8vh) - 15px);
     font-family: 'Inter';
     font-weight: 700;
     font-size: clamp(10px, 3vw, 12px);
-    line-height: 15px;
     text-align: center;
     color: #FFFFFF;
     white-space: nowrap;
@@ -221,7 +217,7 @@ body {
     aspect-ratio: 233/41;
     left: 50%;
     transform: translateX(-50%);
-    top: max(180px, 20vh);
+    top: max(180px, 22vh);
     transition: transform 0.2s ease;
     cursor: pointer;
 }
@@ -245,8 +241,6 @@ body {
     font-family: 'Inter';
     font-weight: 800;
     font-size: clamp(16px, 5vw, 20px);
-    line-height: 24px;
-    text-align: center;
     color: #FFFFFF;
     text-shadow: 0px 0px 1.1px #F5F5F5;
     cursor: pointer;
@@ -254,7 +248,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Анимация при наведении на кнопку */
+/* Анимация */
 .join-container:hover {
     transform: translateX(-50%) scale(1.05);
 }
@@ -276,8 +270,7 @@ body {
 .circles-container {
     position: absolute;
     width: 100%;
-    height: auto;
-    top: max(180px, 35vh);
+    top: max(280px, 38vh);
     display: flex;
     justify-content: center;
     gap: clamp(10px, 3vw, 20px);
@@ -315,7 +308,6 @@ body {
     z-index: 1;  
 }
 
-/* Круги */
 .circle {
     position: absolute;
     top: 0;
@@ -329,7 +321,6 @@ body {
     border: 1.5px solid #FFFFFF;
 }
 
-/* Контент внутри круга */
 .circle-content {
     position: relative;
     z-index: 3;
@@ -347,7 +338,6 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
     font-size: clamp(20px, 6vw, 28px);
-    line-height: 1.2;
     text-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
     margin-bottom: 4px;
 }
@@ -359,7 +349,6 @@ body {
     text-transform: uppercase;
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     max-width: 100px;
-    transition: all 0.3s ease;
 }
 
 /* Буква И */
@@ -389,7 +378,7 @@ body {
     z-index: 2;
 }
 
-/* ===== МЕНЮ СТИЛИ ИЗ FIGMA ===== */
+/* ===== МЕНЮ ===== */
 .menu-page {
     position: absolute;
     top: 0;
@@ -412,18 +401,15 @@ body {
     pointer-events: auto;
 }
 
-/* Меню на всю ширину */
 .menu-page .menu-items-container {
     position: absolute;
     width: calc(100% - 30px);
     max-width: 394px;
     left: 50%;
     transform: translateX(-50%);
-    right: auto;
     top: 55px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
@@ -432,7 +418,6 @@ body {
     pointer-events: auto;
 }
 
-/* Пункты меню */
 .menu-page .menu-item {
     width: 100%;
     font-family: 'Inter', sans-serif;
@@ -464,20 +449,6 @@ body {
     text-shadow: 0 0 15px #FFFFFF;
 }
 
-/* Четвертый пункт с длинным текстом */
-.menu-page .menu-item-4 .menu-item-header {
-    white-space: normal;
-    word-break: break-word;
-    line-height: 1.3;
-    padding: 12px 20px;
-    font-size: 18px;
-}
-
-/* Убираем треугольники */
-.menu-page .menu-arrow {
-    display: none;
-}
-
 /* Подменю */
 .menu-page .submenu {
     max-height: 0;
@@ -485,7 +456,6 @@ body {
     overflow: hidden;
     transition: all 0.3s ease;
     background: rgba(0, 0, 0, 0.3);
-    width: 100%;
 }
 
 .menu-page .menu-item.expanded .submenu {
@@ -522,20 +492,18 @@ body {
     overflow: hidden;
 }
 
-/* Буква И на странице рейтинга */
+/* Буква И */
 .rating-letter-i {
     position: absolute;
     width: min(450px, 100%);
     height: auto;
     aspect-ratio: 450/350;
     left: -4px;
-    /* Меняем bottom на top для точного позиционирования */
-    top: 150px;
-/* Поднимаем выше */
+    bottom: -30px;
     background: url('images/letter-i.svg') no-repeat center/contain;
     filter: drop-shadow(-12px -50px 110.6px rgba(0, 0, 0, 0.6));
     z-index: 0;
-    opacity: 0.5; /* Делаем полупрозрачной, чтобы не мешала */
+    opacity: 0.5;
 }
 
 /* Синие эллипсы */
@@ -546,10 +514,7 @@ body {
     aspect-ratio: 87/377;
     left: -97px;
     bottom: 0;
-    top: auto;
     background: #64A7EB;
-    box-shadow: 0px 4px 130.1px 157px #66B4EA;
-    border-radius: 50%;
     filter: blur(70px);
     opacity: 0.5;
     z-index: 0;
@@ -561,12 +526,9 @@ body {
     height: auto;
     aspect-ratio: 87/377;
     right: -97px;
-    left: auto;
     top: 100px;
     background: #64A7EB;
     opacity: 0.5;
-    box-shadow: 0px 4px 130.1px 157px #66B4EA;
-    border-radius: 50%;
     filter: blur(70px);
     z-index: 0;
 }
@@ -579,18 +541,14 @@ body {
     z-index: 10;
     display: flex;
     flex-direction: column;
-    gap: 0px;
 }
 
 .rating-game-title {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
     font-size: clamp(24px, 6vw, 32px);
-    line-height: 1;
     color: #FFFFFF;
     text-shadow: 0px 4px 13px rgba(0, 0, 0, 0.25);
-    margin: 0;
-    padding: 0;
     max-width: 350px;
     word-wrap: break-word;
 }
@@ -599,21 +557,17 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 100;
     font-size: clamp(14px, 4vw, 18px);
-    line-height: 1;
     color: rgba(255, 255, 255, 0.7);
-    -webkit-font-smoothing: antialiased;
-    margin: 0;
-    padding: 0;
+    margin-top: 5px;
 }
 
-/* Контейнер таблицы */
+/* Таблица */
 .rating-table-wrapper {
     position: absolute;
     left: 30px;
     right: 30px;
     top: 138px;
     z-index: 5;
-    background: transparent;
 }
 
 .rating-table-container {
@@ -622,57 +576,33 @@ body {
     background: rgba(255, 255, 255, 0.06);
     border-radius: 16px;
     overflow: hidden;
-    display: inline-block;
-    min-width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Вертикальная линия */
 .vertical-line {
     position: absolute;
     width: 1px;
     height: 100%;
     background: rgba(255, 255, 255, 0.45);
-    left: 50px;
+    left: 45px;
     top: 0;
     z-index: 1;
 }
 
-/* Контейнер для строк */
 .rating-rows {
     padding: 5px 0;
-    z-index: 2;
     max-height: 450px;
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #8574F4 rgba(255, 255, 255, 0.1);
 }
 
-/* Стили для скроллбара */
-.rating-rows::-webkit-scrollbar {
-    width: 4px;
-}
-
-.rating-rows::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
-
-.rating-rows::-webkit-scrollbar-thumb {
-    background: #8574F4;
-    border-radius: 4px;
-}
-
-/* Строка рейтинга */
+/* Строки */
 .rating-row {
     display: flex;
     align-items: center;
     height: 33px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-    width: 100%;
     padding: 0 15px 0 10px;
-    box-sizing: border-box;
 }
 
 .rating-row:last-child {
@@ -680,44 +610,22 @@ body {
 }
 
 .rating-row .position {
-    width: 25px;
+    width: 35px;
     text-align: center;
-    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-weight: 600;
     font-size: 16px;
     color: #FFFFFF;
-    flex-shrink: 0;
 }
 
 .rating-row .team-name {
     flex: 1;
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 500;
     font-size: 16px;
     color: #FFFFFF;
-    padding-left: 30px;
+    padding-left: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-/* Стили для разных позиций */
-.rating-row.top-three .position {
-    font-weight: 600;
-}
-
-.rating-row.top-three .team-name {
-    font-weight: 500;
-}
-
-.rating-row:not(.top-three) .position {
-    font-weight: 400;
-}
-
-.rating-row:not(.top-three) .team-name {
-    font-weight: 300;
 }
 
 /* ===== МЕНЮ НА СТРАНИЦЕ РЕЙТИНГА ===== */
@@ -743,18 +651,15 @@ body {
     pointer-events: auto;
 }
 
-/* Меню на всю ширину */
 .rating-menu-page .rating-menu-items-container {
     position: absolute;
     width: calc(100% - 30px);
     max-width: 394px;
     left: 50%;
     transform: translateX(-50%);
-    right: auto;
     top: 55px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
@@ -789,18 +694,12 @@ body {
     text-align: center;
 }
 
-.rating-menu-item-header:hover {
-    background: rgba(255, 255, 255, 0.08);
-    text-shadow: 0 0 15px #FFFFFF;
-}
-
 .rating-submenu {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     transition: all 0.3s ease;
     background: rgba(0, 0, 0, 0.3);
-    width: 100%;
 }
 
 .rating-menu-item.expanded .rating-submenu {
@@ -825,23 +724,21 @@ body {
     color: #FFFFFF;
 }
 
-/* Загрузка */
 .loading {
     text-align: center;
     padding: 40px;
     color: rgba(255, 255, 255, 0.5);
-    font-family: 'Inter', sans-serif;
     font-size: 14px;
 }
 
-/* ===== Адаптация под маленькие экраны ===== */
+/* ===== АДАПТАЦИЯ ===== */
 @media (max-width: 422px) {
     .subtitle {
         white-space: normal;
         line-height: 1.2;
         width: 90%;
     }
-
+    
     .circle-group {
         width: 100px;
         height: 100px;
@@ -858,8 +755,6 @@ body {
     .menu-page .menu-items-container,
     .rating-menu-page .rating-menu-items-container {
         width: calc(100% - 20px);
-        left: 50%;
-        transform: translateX(-50%);
     }
     
     .menu-page .menu-item-header,
@@ -872,25 +767,6 @@ body {
     .rating-menu-page .rating-submenu-item {
         font-size: 14px;
         padding: 8px 20px;
-    }
-}
-
-@media (min-height: 700px) {
-    .rating-letter-i {
-        bottom: -10px;
-    }
-}
-
-@media (min-height: 800px) {
-    .rating-letter-i {
-        bottom: 20px;
-    }
-}
-
-@media (max-height: 600px) {
-    .rating-letter-i {
-        bottom: -60px;
-        opacity: 0.3;
     }
 }
 
