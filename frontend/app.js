@@ -296,10 +296,11 @@ function init() {
         });
     }
     
-    // Кнопка "Принять участие"
+    // Кнопка "Принять участие" - теперь открывает ссылку
     if (elements.joinButton) {
         elements.joinButton.addEventListener('click', () => {
-            showPage('menu');
+            // Замените URL на нужный
+            window.open('https://forms.gle/ваша-ссылка-на-регистрацию', '_blank');
             tg.HapticFeedback.impactOccurred('medium');
         });
     }
