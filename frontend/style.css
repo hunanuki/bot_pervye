@@ -796,7 +796,7 @@ body {
 /* Для компьютеров */
 @media (min-width: 601px) {
     .circles-container {
-        top: 320px;
+        top: 280px;
     }
 }
 
