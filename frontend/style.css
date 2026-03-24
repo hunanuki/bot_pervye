@@ -32,10 +32,8 @@ body {
     height: 100vh;
     max-width: 422px;
     margin: 0 auto;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
     background: linear-gradient(0deg, #4000FF, #4000FF);
-    -webkit-overflow-scrolling: touch;
 }
 
 /* Скрываем скроллбар */
@@ -361,10 +359,12 @@ body {
     aspect-ratio: 450/350;
     left: -4px;
     bottom: 0;
-    top: auto;
     background: url('images/letter-i.svg') no-repeat center/contain;
+    background-size: contain;
+    background-position: bottom center;
     filter: drop-shadow(-12px -50px 110.6px rgba(0, 0, 0, 0.6));
     z-index: 1;
+    pointer-events: none;
 }
 
 /* Герои */
@@ -375,9 +375,12 @@ body {
     aspect-ratio: 414/266;
     left: 4px;
     bottom: 0;
-    top: auto;
+    right: 0;
     background: url('images/heroes.svg') no-repeat center/contain;
+    background-size: contain;
+    background-position: bottom center;
     z-index: 2;
+    pointer-events: none;
 }
 
 /* ===== МЕНЮ ===== */
@@ -501,37 +504,40 @@ body {
     height: auto;
     aspect-ratio: 450/350;
     left: -4px;
-    bottom: -30px;
+    top: 60%; /* Центрируем по вертикали */
+    transform: translateY(-50%); /* Сдвигаем на половину высоты */
     background: url('images/letter-i.svg') no-repeat center/contain;
     filter: drop-shadow(-12px -50px 110.6px rgba(0, 0, 0, 0.6));
     z-index: 0;
     opacity: 0.5;
+    pointer-events: none;
 }
 
 /* Синие эллипсы */
 .ellipse-left {
     position: absolute;
-    width: min(87px, 20vw);
-    height: auto;
-    aspect-ratio: 87/377;
+    width: 87px;
+    height: 377px;
     left: -97px;
-    bottom: 0;
+    top: 625px;
     background: #64A7EB;
-    filter: blur(70px);
-    opacity: 0.5;
+    box-shadow: 0px 4px 130.1px 157px #66B4EA;
+    border-radius: 50%;
+    filter: blur(50px);
     z-index: 0;
 }
 
 .ellipse-right {
     position: absolute;
-    width: min(87px, 20vw);
-    height: auto;
-    aspect-ratio: 87/377;
-    right: -97px;
-    top: 100px;
+    width: 87px;
+    height: 277px;
+    left: 422px;
+    top: 0px;
     background: #64A7EB;
-    opacity: 0.5;
-    filter: blur(70px);
+    opacity: 0.68;
+    box-shadow: 0px 4px 130.1px 157px #66B4EA;
+    border-radius: 50%;
+    filter: blur(50px);
     z-index: 0;
 }
 
