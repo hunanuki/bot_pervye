@@ -6,6 +6,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQuer
 BOT_TOKEN = "8709027085:AAEBcFrF9720mtNVBI-SvRWbeyEaj63hdR8"
 FRONTEND_URL = "https://hunanuki.github.io/bot_pervye/frontend"
 
+
 # Включаем логирование
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
