@@ -24,7 +24,6 @@ const elements = {
     ratingPage: document.getElementById('ratingPage'),
     
     menuToggle: document.getElementById('menuToggle'),
-    menuClose: document.getElementById('menuClose'),
     joinButton: document.getElementById('joinButton'),
     menuToggleRating: document.getElementById('menuToggleRating'),
     
